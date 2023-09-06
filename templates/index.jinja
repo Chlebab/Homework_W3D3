@@ -6,7 +6,7 @@
     <br>
 
     <label for="date"> Event date: </label>
-    <input type="text" name="date" id="date"/>
+    <input type="date" name="date" id="date"/>
     <br>
 
     <label for="number"> Event number: </label>
@@ -21,6 +21,11 @@
     <input type="text" name="room_location" id="room_location"/>
     <br>
 
+    <label for="recurring"> Recurring: </label>
+
+    <input type="checkbox" name="recurring"  id="recurring" value="Yes"/>Yes
+    <br>
+
     <input type="submit" value="Add Event"/>
 </form>
 
@@ -32,6 +37,11 @@
         <br>Event number: {{ event.event_number }} 
         <br>Number of guests: {{ event.guest_number }} 
         <br>Location: {{ event.room_location }}
+        {% if event.recurring == "Yes" %}
+            <br>Recurring: {{ event.recurring }} <p>&#9989;&#x21BA;&#9989;</p>
+        {% else %}
+            <br>Recurring: {{ event.recurring }} <p>&#10060;&#x21BA;&#10060;</p>
+        {% endif %}
     </li>
 {% endfor %}
 </ul>
